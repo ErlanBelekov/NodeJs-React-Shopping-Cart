@@ -74,7 +74,7 @@ class ItemModal extends Component {
                 />
                 <Button
                   color="dark"
-                  style={{marginHorizontal:20,marginVertical:20}}
+                  style={{marginHorizontal:20,marginTop:20}}
                   block
                 >
                   Add Item

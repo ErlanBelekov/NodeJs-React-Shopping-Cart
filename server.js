@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-//
+// BRING IN ITEMS API HANDLER
 const items = require('./routes/api/items.js');
 
 // INITIALIZE EXPRESS
@@ -22,7 +22,6 @@ mongoose
   .catch(err => console.log(err))
 
 app.use('/api/items', items);
-
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production'){
