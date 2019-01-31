@@ -1,1 +1,1 @@
-Description is optional, isn't it?
+<h1>Basic MERN stack project</h1>
