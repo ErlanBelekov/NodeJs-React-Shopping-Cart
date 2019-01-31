@@ -14,7 +14,6 @@ import store from '../store';
 import {toggleModal} from '../actions/modal_actions';
 
 export function callToToggleModal() {
-  console.log('toggle it');
   store.dispatch(toggleModal());
 }
 

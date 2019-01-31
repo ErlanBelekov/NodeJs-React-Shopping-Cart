@@ -42,8 +42,6 @@ class ItemModal extends Component {
   }
   render(){
     const modal = this.props.modal.modal_is_open;
-    console.log(this.props.modal.modal_is_open);
-    console.log(modal);
     return(
       <div>
         <Modal
