@@ -25,7 +25,7 @@ class ShoppingList extends Component {
     const { items } = this.props.item;
     return(
       <Container>
-        <ListGroup style={{marginTop:20}}>
+        <ListGroup style={{marginTop:10}}>
           <TransitionGroup className="shopping-list">
           {items.map(({ _id, name }) => (
             <CSSTransition key={_id} timeout={500} classNames="fade">
@@ -45,13 +45,12 @@ class ShoppingList extends Component {
           ))}
           </TransitionGroup>
         </ListGroup>
-
       </Container>
     );
   }
 }
 
-ShoppingList.PropTypes = {
+ShoppingList.propTypes = {
   getItems: PropTypes.func.isRequired,
   item: PropTypes.object.isRequired
 }

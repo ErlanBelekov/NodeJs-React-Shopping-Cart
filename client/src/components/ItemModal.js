@@ -11,54 +11,46 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import {addItem} from '../actions/itemAction';
+import {callToToggleModal} from './AppNavbar';  // Get this function for reference in Modal tag
+
+import store from '../store';
 
 class ItemModal extends Component {
   state = {
     modal: false,
     name: ''
   };
-
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   }
-
   onChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
-
   onSubmit = (e) => {
     e.preventDefault();
     const newItem = {
       name: this.state.name
     };
-
     // Add item via add item action
     this.props.addItem(newItem);
-
     // CLose the Modal
     this.toggle();
-
   }
-
   render(){
+    const modal = this.props.modal.modal_is_open;
+    console.log(this.props.modal.modal_is_open);
+    console.log(modal);
     return(
       <div>
-        <Button
-          color="dark"
-          style={{margin:20}}
-          onClick={this.toggle}
-        >
-          Add Item
-        </Button>
         <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
+          isOpen={modal}
+          toggle={callToToggleModal}
         >
-          <ModalHeader toggle={this.toggle}>
+          <ModalHeader toggle={callToToggleModal}>
             Add To Shopping List
           </ModalHeader>
           <ModalBody>
@@ -74,8 +66,9 @@ class ItemModal extends Component {
                 />
                 <Button
                   color="dark"
-                  style={{marginHorizontal:20,marginTop:20}}
+                  style={{marginHorizontal:10,marginTop:10}}
                   block
+                  onClick={this.onSubmit}
                 >
                   Add Item
                 </Button>
@@ -89,7 +82,8 @@ class ItemModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  item: state.item
+  item: state.item,
+  modal: state.modal
 })
 
 export default connect(mapStateToProps, {addItem})(ItemModal);
