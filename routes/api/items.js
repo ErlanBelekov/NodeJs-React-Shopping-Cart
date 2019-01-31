@@ -19,7 +19,14 @@ router.get('/', (req, res) => {
 // @route   POST api/items
 // @desc    Create An Item
 // @access  public
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
+  const {
+    name,
+    picture
+  } = req.body;
+  if(!name) {
+    next(err.noName)
+  }
   const newItem = new Item({
     name: req.body.name
   });
